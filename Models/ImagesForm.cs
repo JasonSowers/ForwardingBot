@@ -155,6 +155,13 @@ namespace Microsoft.Bot.Sample.FormBot
                 {
                     Console.WriteLine("Error: ", e.StackTrace);
                 }
+                finally
+                {
+                    if (File.Exists(localFileName))
+                    {
+                        File.Delete(localFileName);
+                    }
+                }
 
               
                 await context.PostAsync("Here is a summary of the data you submitted:");
